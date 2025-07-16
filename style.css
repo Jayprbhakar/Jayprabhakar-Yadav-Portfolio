@@ -210,3 +210,18 @@ a {
     background-color: #f3f0f7;
     padding-left: 40px;
 }
+
+
+.port-foot {
+    background-color: #abb7c6;
+    color: #1e2a38;
+    margin: 0px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    text-align: center;
+    position: relative;
+    top: 50px;
+    width: 100%;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
