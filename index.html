@@ -9,8 +9,8 @@
 
 </head>
 <body>
-    <div class="port-section">
-        <nav>
+    <div class="port-section" >
+        <nav id="top">
             <ul class="port-nav">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#Skills">Skills</a></li>
@@ -110,7 +110,6 @@
                 <li class="fli"><a href="https://sudhamlifespaces.in/">sudhamlifespaces</a></li>
                 <li class="fli"><a href="https://hospitalbedmanufacturers.in/">hospitalbedmanufacturers</a></li>
                 <li class="fli"><a href="https://aquacaresee.com/">aquacaresee</a></li>
-
             </ol>
         </div>
     </div>
@@ -122,15 +121,53 @@
         <h4>College Name: Nagindash Khandwala College</h4>
         <h4>CGPA Garde: 7.4</h4>
     </div>
-
     
+    
+    <!-- button for go up and down direclty pressing on the button -->
+    <div class="arrowbtn">
+        <button class="port-up-down">
+            <a href="#top">
+                <i class="bi bi-arrow-up"></i>
+            </a>
+            </button>
+            <button class="port-up-down">
+            <a href="#down">
+                <i class="bi bi-arrow-down" id="downSty"></i>
+            </a>
+        </button>
+    </div>
 
+    <style>
 
-    <Footer class="port-foot">
+        .arrowbtn {
+            margin-top: 20px;
+        }
+
+        .port-up-down {
+            background-color: rgb(255, 255, 255);
+            padding-top: 20px;
+            padding-bottom: 30px;
+            cursor: pointer;
+            color: white;
+            height: 50px;
+            width: 50px;
+            border-radius: 50px;
+            font-size: 25px;
+            padding-bottom: 70px;
+        }
+
+        #downSty {
+            padding-top: 60px;
+        }
+    </style>
+
+    <Footer class="port-foot" id="down">
         <div>
             <p>All Rights Reserved By JP Developer @ 2025</p>
         </div>
     </Footer>
+    
+
     
 </body>
 </html>
