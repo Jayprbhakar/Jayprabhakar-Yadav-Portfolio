@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="contactstyle.css">
+    <script src="contactlogic.js"></script>
+    <title>Contact me</title>
+</head>
+<body>
+    <div>
+        <button class="port-con-btn"><a href="index.html" target="_self" rel="noopener noreferrer"><i class="bi bi-arrow-left"></i>Back To Home</a></button>
+    </div>
+
+    <!-- heading -->
+
+    <head>
+        <h1 class="port-con-head">Contact Us Here!</h1>
+    </head>
+
+    <!-- Form For Register new visitors -->
+
+    <form action="" id="contactForm" class="port-con-form">
+        <div class="b1-form">
+            <div class="form-box1">
+                <label for="fullname">Full Name*:</label>
+                <input type="text" id="fullName" class="in-style" required>
+            </div>
+            <div class="form-box1">
+            <label for="email">Email Address*:</label>
+            <input type="text" id="email" class="in-style" required>
+            </div>
+            <div class="form-box1">
+            <label for="contactnum">Contact Number:</label>
+            <input type="tel" id="phone" class="in-style">
+            </div>
+            <div class="form-box1" style="align-items: center;">
+            <label for="messagebox" style="padding-bottom: 20px;">Message:</label>
+            <textarea class="in-style" id="message"></textarea>
+            </div>
+            <div class="form-box1">
+            <button type="submit" class="form-btn">submit</button>
+            </div>
+        </div>
+    </form>
+        <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBdpOFVs4vbO4evr2jtlgWcIkrt-oSABfk",
+        authDomain: "datajayport.firebaseapp.com",
+        projectId: "datajayport"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        let fullName = document.getElementById("fullName").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let message = document.getElementById("message").value;
+
+        try {
+        await addDoc(collection(db, "contactMessages"), {
+            fullName,
+            email,
+            phone,
+            message,
+            date: new Date()
+        });
+        alert("Message submitted successfully!");
+        document.getElementById("contactForm").reset();
+        } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("Error saving message!");
+        }
+    });
+    </script>
+
+
+    <style>
+
+        .form-box1 {
+            padding: 20px;
+
+        }
+
+        .in-style {
+            border: 1px solid #d6d3e7;
+            padding: 7px;
+        }
+        
+        .in-style:focus {
+            border: 1px solid #d6d3e7;
+            outline: none;
+            color: white;
+            padding: 7px;
+        }
+
+        .b1-form {
+            border: 2px white dashed;
+        }
+
+        * {
+            background-color: #393d40;
+            color: white;
+            font-size: 18px;
+            padding-left: 8px;
+            padding-top: 8px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+        
+        input {
+            border-style: solid;
+            border-radius: 7px;
+            border-color: black;
+        }
+        
+        input:active {
+            border-color: black;
+        }
+        
+        .port-con-form {
+            width: 60%;
+            justify-content: space-around;
+            display: block;
+            margin-left: 70px;
+        }
+
+        /* Anchor style */
+        a {
+            text-decoration: none;
+        }
+        
+        .bi-arrow-left {
+            color: rgb(255, 255, 255);
+            padding-right: 10px;
+        }  
+        
+        .bi-arrow-left:hover {
+            color: rgb(252, 7, 7);
+        } 
+
+        .port-con-btn {
+            border-style: none;
+            cursor: pointer;
+        }
+
+        /* Title for contact us */
+
+        .port-con-head {
+           font-size: 55px;
+           width: 70%;
+           margin-left: 70px;
+           color: white;
+        }
+        
+        h1 {
+
+            text-decoration: wavy;
+            text-decoration-color:rgb(252, 7, 7);
+        }
+
+        .form-btn {
+            border: 2px solid #bab2e8; /*  */
+            border-radius: 10px;
+            text-align: center;
+            padding: 5px 10px 5px 10px;
+            cursor: pointer;
+            color: black;
+            background-color: #d6d3e7;
+            align-items: center;
+        }
+
+        .form-btn:hover {
+            color: white;
+            background-color: black;
+        }
+
+    </style>
+</body>
+</html>
